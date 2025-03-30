@@ -27,6 +27,8 @@ tidy_quakersaints <- quakersaints |>
 View the tidied data. 
 ## What does unnest_tokens() do?
 
+It puts each word in its own row.
+
 One think that would be convenient is to be able to reconstruct where in the text the particular token came from.
 For example we could track the row number in the original data.
 
@@ -38,6 +40,7 @@ tidy_quakersaints <- quakersaints |>
 ```
 ## View the data. How does it differ? 
 
+tidy_quakersaints has one word per row, no row is empty, and there is another column indicating the row that the word is on in the quakersaints dataset.
 
 Let's find the most common words
 
@@ -48,6 +51,7 @@ tidy_quakersaints |>  count(word, sort = TRUE)
 
 ## What do you notice about the most common words?  Are they interesting? Do they have anythig in common?
 
+The most common words are smaller words that are most likely used to either point out something specific in the story, or to connect ideas together.
 
 
 In text data "stop words" are words that are common and not meaningful. They are words we don't want to include in our data.  
@@ -68,7 +72,7 @@ tidy_quakersaints <- quakersaints |>
 
 What is an anti-join?
 ```{}
-
+An anti join prevents the words that are passed into the function from being counted.
 ```
 
 Notice that I use `|>` instead of `%>%` ... this is newer style and does not require loading dplyr or magrittr.  It is part of base r.
@@ -79,5 +83,5 @@ tidy_quakersaints |>  count(word, sort = TRUE)
 ```
 How does this list of the most frequent words differ from the first one? 
 
-
+These words are much more specific and provide more insight on the text as opposed to the stop words.
 
